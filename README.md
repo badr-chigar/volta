@@ -1,47 +1,59 @@
-# VOLTA — Mobilité urbaine intelligente
+# VOLTA — Plateforme de mobilité urbaine intelligente
 
-> Plateforme de **supervision en temps réel** d'une flotte de véhicules électriques : positions live sur carte, état des bornes, et tableaux de bord analytiques.
+Supervision en **temps réel** d'une flotte de véhicules électriques et de bornes de recharge : carte interactive, tableaux de bord temps réel et visualisation de données. Frontend **React (Vite)** + backend **Node.js / Express** avec **WebSocket** et cartographie **Leaflet**.
 
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Socket.io](https://img.shields.io/badge/WebSocket-010101?style=flat&logo=socketdotio&logoColor=white)
+![Socket](https://img.shields.io/badge/WebSocket-010101?style=flat&logo=socketdotio&logoColor=white)
 ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=flat&logo=leaflet&logoColor=white)
 
-## 🔗 Démo & liens
+🌐 **Démo live** : [badr-chigar.vercel.app/volta.html](https://badr-chigar.vercel.app/volta.html) · 👤 **Portfolio** : [badr-chigar.vercel.app](https://badr-chigar.vercel.app)
 
-- 🌐 **Démo live** : [badr-chigar.vercel.app/volta.html](https://badr-chigar.vercel.app/volta.html)
-- 👤 **Portfolio** : [badr-chigar.vercel.app](https://badr-chigar.vercel.app)
-
-## 🎯 Aperçu
-
-VOLTA supervise une **flotte de véhicules électriques en temps réel**. Les positions et états remontent via **WebSocket**, s'affichent sur une **carte Leaflet** et alimentent des **graphiques Recharts** pour le suivi opérationnel.
+> Projet personnel de Badr Chigar — Ingénieur d'État en Informatique (EMSI Casablanca), développeur Full Stack Java/Spring & React.
 
 ## ✨ Fonctionnalités
 
-- 🗺️ **Carte temps réel** — positions des véhicules (Leaflet)
-- ⚡ **Flux live** — mises à jour poussées via WebSocket
-- 📊 **Dashboards** — autonomie, trajets, bornes (Recharts)
-- 🚙 **Suivi de flotte** — état, alertes, historique
+- **Temps réel** : positions, vitesse et batterie des véhicules poussées par WebSocket (mise à jour toutes les 2 s).
+- **Carte interactive Leaflet** : marqueurs des véhicules et bornes, mise à jour live.
+- **Tableaux de bord** : KPIs (véhicules actifs, autonomie moyenne, bornes libres) + graphique temps réel.
+- **Flotte** : liste des véhicules avec statut (en course, en charge, hors-ligne) et niveau de batterie.
+- **Bornes de recharge** : disponibilité, puissance, occupation.
 
-## 🛠️ Stack technique
+## 🛠️ Stack
 
 | Couche | Technologies |
 |---|---|
-| Front-end | React, Leaflet, Recharts |
-| Back-end | Node.js, Express, WebSocket |
-| Temps réel | WebSocket (push) |
+| Frontend | React 18, Vite, React Router, Leaflet, Recharts |
+| Backend | Node.js, Express, WebSocket (ws) |
+| Données | Simulateur de télémétrie temps réel |
 
-## 🚀 Lancer en local
+## 🗂️ Architecture
 
-```bash
-# Back-end
-cd server && npm install && npm run dev
-
-# Front-end
-cd client && npm install && npm run dev
+```
+volta/
+├── server/                  API REST + serveur WebSocket (simulateur de flotte)
+│   ├── index.js
+│   └── fleet.js             modèle de la flotte + simulation
+└── client/                  SPA React (Vite)
+    └── src/
+        ├── pages/           Dashboard, Carte, Vehicules, Stations
+        └── components/      Layout, MapView (Leaflet), LiveChart
 ```
 
-## 👤 Auteur
+## 🚀 Démarrage
 
-**Badr Chigar** — Ingénieur d'État Full Stack (Java/Spring & React)
-[Portfolio](https://badr-chigar.vercel.app) · [LinkedIn](https://www.linkedin.com/in/badr-chigar) · [GitHub](https://github.com/badr-chigar)
+**Backend (port 4001)**
+```bash
+cd server && npm install && npm start
+```
+
+**Frontend (port 5173)**
+```bash
+cd client && npm install && npm run dev
+```
+Ouvre `http://localhost:5173` — la carte et les dashboards se mettent à jour en direct.
+
+## 📄 Licence
+
+MIT © Badr Chigar
